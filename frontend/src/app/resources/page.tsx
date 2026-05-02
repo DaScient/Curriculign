@@ -134,7 +134,7 @@ const SECTIONS: { heading: string; intro: string; items: Resource[] }[] = [
       {
         title: "Suggest a feature",
         summary:
-          "Tell us about a workflow we should automate next. Educator requests are prioritised.",
+          "Tell us about a workflow we should automate next. Educator requests are prioritized.",
         href: "https://github.com/DaScient/Curriculign/issues/new?labels=enhancement&title=Resource%20request",
         tag: "Roadmap",
         status: "available",
