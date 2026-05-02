@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import StatsCards from "@/components/dashboard/StatsCards";
 import CoverageHeatmap from "@/components/dashboard/CoverageHeatmap";
@@ -16,7 +16,7 @@ const FRAMEWORK_LABELS: Record<Framework, string> = {
   COMMON_CORE: "Common Core",
 };
 
-export default function DashboardPage() {
+function DashboardContent() {
   const params = useSearchParams();
   const isDemo = params.get("demo") === "true";
   const syllabusId = params.get("id");
@@ -143,5 +143,22 @@ export default function DashboardPage() {
         </>
       )}
     </div>
+  );
+}
+
+// `useSearchParams` requires a Suspense boundary when the page is
+// statically pre-rendered (e.g. by the GitHub Pages workflow).
+export default function DashboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="py-20 text-center text-slate-500">
+          <div className="text-4xl mb-3">⏳</div>
+          Loading dashboard…
+        </div>
+      }
+    >
+      <DashboardContent />
+    </Suspense>
   );
 }

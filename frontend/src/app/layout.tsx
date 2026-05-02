@@ -58,6 +58,12 @@ export default function RootLayout({
               >
                 Dashboard
               </Link>
+              <Link
+                href="/resources"
+                className="rounded-md px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition"
+              >
+                Resources
+              </Link>
               <a
                 href="https://github.com/DaScient/Curriculign"
                 target="_blank"
@@ -102,6 +108,7 @@ export default function RootLayout({
                   <li><Link href="/upload" className="hover:text-white transition">Upload Syllabus</Link></li>
                   <li><Link href="/dashboard?demo=true" className="hover:text-white transition">Live Demo</Link></li>
                   <li><Link href="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
+                  <li><Link href="/resources" className="hover:text-white transition">Educator Resources</Link></li>
                 </ul>
               </div>
 
