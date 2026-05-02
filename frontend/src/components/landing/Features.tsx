@@ -49,7 +49,7 @@ export default function Features() {
             <Card key={f.title} className="glass-card gentle-lift overflow-hidden">
               <div className={`h-1 w-full bg-gradient-to-r ${f.accent}`} />
               <CardHeader className="pb-2">
-                <div className="mb-2 text-3xl" aria-hidden>{f.icon}</div>
+                <div className="mb-2 text-3xl" aria-hidden="true">{f.icon}</div>
                 <CardTitle className="text-lg text-slate-900">{f.title}</CardTitle>
                 <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{f.subtitle}</p>
               </CardHeader>
@@ -58,7 +58,7 @@ export default function Features() {
                 <ul className="mt-4 space-y-1.5">
                   {f.highlights.map((h) => (
                     <li key={h} className="flex items-center gap-2 text-sm text-slate-700">
-                      <span aria-hidden className="text-emerald-500">✓</span>
+                      <span aria-hidden="true" className="text-emerald-500">✓</span>
                       {h}
                     </li>
                   ))}

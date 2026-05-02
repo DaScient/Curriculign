@@ -7,7 +7,7 @@ export default function CallToAction() {
       <div className="glass-pane relative overflow-hidden px-6 py-16 sm:py-20 text-center">
         {/* Soft accent wash — subtle, never harsh. */}
         <div
-          aria-hidden
+          aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-200/30 via-indigo-200/20 to-violet-200/30"
         />
 

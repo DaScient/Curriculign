@@ -93,7 +93,7 @@ export default function SyllabusUploader() {
                 }`}
             >
               <input {...getInputProps()} />
-              <div className="text-4xl" aria-hidden>{file ? "📄" : "☁️"}</div>
+              <div className="text-4xl" aria-hidden="true">{file ? "📄" : "☁️"}</div>
               {file ? (
                 <p className="mt-2 font-medium text-slate-700">{file.name}</p>
               ) : (

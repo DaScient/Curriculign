@@ -28,7 +28,7 @@ export default function TechStack() {
               key={item.label}
               className="glass-card gentle-lift p-4"
             >
-              <div className="mb-2 text-2xl" aria-hidden>{item.icon}</div>
+              <div className="mb-2 text-2xl" aria-hidden="true">{item.icon}</div>
               <div className="text-sm font-semibold text-slate-800">{item.label}</div>
               <div className="mt-1 text-xs leading-relaxed text-slate-500">{item.desc}</div>
             </div>

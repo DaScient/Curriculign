@@ -86,7 +86,7 @@ function DashboardContent() {
       {/* Loading / error states */}
       {loading && (
         <div className="glass-pane py-20 text-center text-slate-500">
-          <div className="text-4xl mb-3" aria-hidden>⏳</div>
+          <div className="text-4xl mb-3" aria-hidden="true">⏳</div>
           Loading analysis results…
         </div>
       )}
@@ -99,7 +99,7 @@ function DashboardContent() {
       {/* No data, no ID */}
       {!loading && !data && !error && (
         <div className="glass-pane border-dashed py-24 text-center">
-          <div className="text-5xl mb-4" aria-hidden>📊</div>
+          <div className="text-5xl mb-4" aria-hidden="true">📊</div>
           <h2 className="text-lg font-semibold text-slate-700">No analysis loaded</h2>
           <p className="mt-2 text-sm text-slate-500">
             <a href="/upload" className="text-indigo-600 underline-offset-4 hover:underline">Upload a syllabus</a> to run
@@ -153,7 +153,7 @@ export default function DashboardPage() {
     <Suspense
       fallback={
         <div className="glass-pane mt-8 py-20 text-center text-slate-500">
-          <div className="text-4xl mb-3" aria-hidden>⏳</div>
+          <div className="text-4xl mb-3" aria-hidden="true">⏳</div>
           Loading dashboard…
         </div>
       }
