@@ -48,11 +48,11 @@ export default function StatsCards({ data }: Props) {
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
       {cards.map((c) => (
-        <Card key={c.label} className="text-center">
+        <Card key={c.label} className="glass-card gentle-lift text-center">
           <CardContent className="pt-5 pb-4">
-            <div className={`text-3xl font-bold ${c.color}`}>{c.value}</div>
+            <div className={`text-3xl font-semibold ${c.color}`}>{c.value}</div>
             <div className="mt-1 text-sm font-medium text-slate-700">{c.label}</div>
-            <div className="text-xs text-muted-foreground">{c.sub}</div>
+            <div className="text-xs text-slate-500">{c.sub}</div>
           </CardContent>
         </Card>
       ))}

@@ -2,30 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ──────────────────────────────────────────────────────────────────
+   Curriculign — soft-white glass morphism design system
+   ──────────────────────────────────────────────────────────────────
+   Goals:
+   • A single, calm pane of glass over a faint pastel canvas.
+   • Soft whites, gentle borders, low-contrast text where decorative,
+     high-contrast text where informative (a11y).
+   • Smooth, reduced-motion-aware transitions everywhere.
+   ────────────────────────────────────────────────────────────────── */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft-white canvas (a hint of cool blue, never pure 100%) */
+    --background: 210 40% 98.5%;
+    --foreground: 220 30% 14%;
+
+    /* Cards: nearly opaque white but tuned for translucency on glass */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --border: 214.3 31.8% 91.4%;
-    --radius: 0.5rem;
+    --card-foreground: 220 30% 14%;
+
+    /* Calm, single-accent palette */
+    --primary: 221 70% 55%;
+    --primary-foreground: 210 40% 99%;
+
+    --secondary: 210 30% 96%;
+    --secondary-foreground: 220 25% 22%;
+
+    --muted: 210 30% 96%;
+    --muted-foreground: 220 12% 46%;
+
+    --accent: 210 30% 96%;
+    --accent-foreground: 220 25% 22%;
+
+    /* Hairline, low-contrast border tuned for glass surfaces */
+    --border: 220 20% 90%;
+    --ring: 221 70% 70%;
+
+    --radius: 0.875rem;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    /* Soft, layered ambient backdrop — very low saturation, no harsh
+       gradients. Sits behind every glass pane to give the "single
+       sheet of frosted glass over a calm sky" feel. */
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 60% 45% at 12% 8%, rgba(186, 213, 255, 0.55), transparent 60%),
+      radial-gradient(ellipse 55% 40% at 88% 12%, rgba(225, 214, 255, 0.45), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(214, 234, 255, 0.55), transparent 65%),
+      radial-gradient(ellipse 40% 30% at 92% 78%, rgba(255, 232, 220, 0.35), transparent 60%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100dvh;
+  }
+
+  /* Honor user motion preferences — keep things gentle. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Calmer focus ring — visible but never harsh. */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.45);
+    border-radius: 0.5rem;
+  }
+
+  /* Subtle, glassy scrollbar (WebKit). */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220 20% 80% / 0.5);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(220 25% 70% / 0.7);
+    background-clip: padding-box;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Reusable glass utilities
+   ──────────────────────────────────────────────────────────────── */
+@layer components {
+  /* The signature surface — translucent white, blurred backdrop,
+     hairline border, very soft shadow. Use on sections & cards. */
+  .glass-pane {
+    @apply rounded-2xl border border-white/60 bg-white/55
+           shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_30px_-12px_rgba(15,23,42,0.10)]
+           backdrop-blur-xl backdrop-saturate-150;
+  }
+
+  /* A lighter variant for nested cards inside a glass-pane. */
+  .glass-card {
+    @apply rounded-xl border border-white/70 bg-white/70
+           shadow-[0_1px_2px_rgba(15,23,42,0.04)]
+           backdrop-blur-md backdrop-saturate-150;
+  }
+
+  /* Sticky chrome (header, toolbars) — slightly more opaque so text
+     stays readable as content scrolls beneath. */
+  .glass-chrome {
+    @apply border-white/60 bg-white/70 backdrop-blur-xl backdrop-saturate-150;
+  }
+
+  /* Gentle interactive lift — pairs with glass-card / glass-pane.
+     Uses transform + shadow only; no color flashes. */
+  .gentle-lift {
+    @apply transition-[transform,box-shadow,border-color,background-color]
+           duration-300 ease-out
+           hover:-translate-y-0.5
+           hover:shadow-[0_2px_4px_rgba(15,23,42,0.05),0_18px_40px_-18px_rgba(15,23,42,0.18)];
+  }
+
+  /* Tonal accent text used sparingly for emphasis. */
+  .text-accent-soft {
+    @apply bg-gradient-to-r from-sky-600 via-indigo-500 to-violet-500 bg-clip-text text-transparent;
   }
 }

@@ -72,19 +72,19 @@ export default function CoverageHeatmap({ data }: Props) {
   const clos = Array.from(new Set(data.mappings.map((m) => m.clo_text)));
 
   return (
-    <div className="overflow-x-auto rounded-xl border bg-white shadow-sm">
-      <div className="min-w-[640px] p-4">
+    <div className="glass-pane overflow-x-auto">
+      <div className="min-w-[640px] p-5">
         <div className="mb-3 flex items-center gap-6 text-xs font-medium text-slate-600">
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded bg-green-500" />
+            <span className="inline-block h-3 w-3 rounded bg-emerald-400/90" />
             Covered (≥ 75%)
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded bg-amber-400" />
+            <span className="inline-block h-3 w-3 rounded bg-amber-400/90" />
             Partial (≥ 55%)
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-3 w-3 rounded bg-red-500" />
+            <span className="inline-block h-3 w-3 rounded bg-rose-400/90" />
             Uncovered
           </span>
         </div>
@@ -92,13 +92,13 @@ export default function CoverageHeatmap({ data }: Props) {
         <table className="w-full border-collapse text-xs">
           <thead>
             <tr>
-              <th className="w-72 border-b pb-2 pr-4 text-left font-medium text-slate-500">
+              <th className="w-72 border-b border-slate-200/70 pb-2 pr-4 text-left font-medium text-slate-500">
                 Course Learning Outcome
               </th>
               {standards.map((s) => (
                 <th
                   key={s.code}
-                  className="border-b pb-2 px-1 text-center font-medium text-slate-500"
+                  className="border-b border-slate-200/70 px-1 pb-2 text-center font-medium text-slate-500"
                   title={s.title}
                 >
                   <div className="truncate max-w-[44px]" style={{ writingMode: "vertical-lr", transform: "rotate(180deg)", height: 80 }}>
@@ -110,18 +110,18 @@ export default function CoverageHeatmap({ data }: Props) {
           </thead>
           <tbody>
             {clos.map((clo, ri) => (
-              <tr key={ri} className="hover:bg-slate-50">
-                <td className="border-b py-2 pr-4 text-slate-700 align-middle">
+              <tr key={ri} className="transition-colors hover:bg-white/60">
+                <td className="border-b border-slate-200/60 py-2 pr-4 align-middle text-slate-700">
                   {shortClo(clo)}
                 </td>
                 {standards.map((s) => {
                   const row = lookup.get(`${clo}|||${s.code}`);
                   return (
-                    <td key={s.code} className="border-b py-2 px-1 text-center align-middle">
+                    <td key={s.code} className="border-b border-slate-200/60 px-1 py-2 text-center align-middle">
                       {row ? (
                         <HeatCell row={row} />
                       ) : (
-                        <div className="mx-auto h-10 w-10 rounded bg-slate-100" />
+                        <div className="mx-auto h-10 w-10 rounded bg-slate-100/70" />
                       )}
                     </td>
                   );

@@ -79,16 +79,16 @@ const TOOLKIT: Tool[] = [
 
 export default function EducatorToolkit() {
   return (
-    <section id="toolkit" className="bg-white py-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="toolkit" className="mt-12">
+      <div className="glass-pane px-6 py-16 sm:py-20">
         <div className="mb-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-700">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500">
             For Teachers, Faculty &amp; Curriculum Designers
           </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
             The Educator Toolkit
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
             Practical, classroom-tested utilities that quietly do the
             administrative work — so you can spend more time teaching.
           </p>
@@ -107,38 +107,36 @@ export default function EducatorToolkit() {
                 key={tool.title}
                 {...wrapperProps}
                 className={
-                  isLive
-                    ? "group block transition hover:-translate-y-0.5"
-                    : "block"
+                  isLive ? "group block" : "block"
                 }
               >
                 <Card
-                  className={`h-full border ${
+                  className={
                     isLive
-                      ? "border-slate-200 group-hover:border-blue-300 group-hover:shadow-md"
-                      : "border-dashed border-slate-200 bg-slate-50/60"
-                  }`}
+                      ? "glass-card gentle-lift h-full"
+                      : "h-full rounded-xl border border-dashed border-slate-300/70 bg-white/40 backdrop-blur-md"
+                  }
                 >
                   <CardHeader className="pb-2">
                     <div className="mb-2 flex items-center justify-between">
                       <span
                         className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${
                           isLive
-                            ? "bg-emerald-100 text-emerald-800"
-                            : "bg-slate-200 text-slate-600"
+                            ? "bg-emerald-100/80 text-emerald-700"
+                            : "bg-slate-100/80 text-slate-500"
                         }`}
                       >
                         {isLive ? "Available" : "Coming soon"}
                       </span>
                       {isLive && (
-                        <span className="text-slate-400 transition group-hover:text-blue-500">
+                        <span className="text-slate-400 transition-colors duration-200 group-hover:text-indigo-500">
                           →
                         </span>
                       )}
                     </div>
                     <CardTitle
-                      className={`text-lg ${
-                        isLive ? "text-slate-900" : "text-slate-700"
+                      className={`text-base ${
+                        isLive ? "text-slate-900" : "text-slate-600"
                       }`}
                     >
                       {tool.title}
@@ -161,7 +159,7 @@ export default function EducatorToolkit() {
             href="https://github.com/DaScient/Curriculign/issues/new?labels=enhancement&title=Toolkit%20request"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-blue-700 underline-offset-4 hover:underline"
+            className="font-medium text-indigo-600 underline-offset-4 transition-colors hover:text-indigo-700 hover:underline"
           >
             Suggest one on GitHub ↗
           </a>

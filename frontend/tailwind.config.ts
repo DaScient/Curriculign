@@ -29,6 +29,7 @@ const config: Config = {
           foreground: "hsl(var(--accent-foreground))",
         },
         border: "hsl(var(--border))",
+        ring: "hsl(var(--ring))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

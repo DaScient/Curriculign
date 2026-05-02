@@ -152,7 +152,7 @@ const SECTIONS: { heading: string; intro: string; items: Resource[] }[] = [
 function StatusPill({ status, tag }: { status: ResourceStatus; tag?: string }) {
   if (tag && status === "available") {
     return (
-      <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700">
+      <span className="inline-flex items-center rounded-full bg-indigo-50/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-indigo-700">
         {tag}
       </span>
     );
@@ -161,10 +161,10 @@ function StatusPill({ status, tag }: { status: ResourceStatus; tag?: string }) {
     status === "available" ? "Available" : status === "draft" ? "In draft" : "Planned";
   const styles =
     status === "available"
-      ? "bg-emerald-100 text-emerald-800"
+      ? "bg-emerald-100/80 text-emerald-700"
       : status === "draft"
-      ? "bg-amber-100 text-amber-800"
-      : "bg-slate-200 text-slate-600";
+      ? "bg-amber-100/80 text-amber-700"
+      : "bg-slate-100/80 text-slate-500";
   return (
     <span
       className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${styles}`}
@@ -176,17 +176,17 @@ function StatusPill({ status, tag }: { status: ResourceStatus; tag?: string }) {
 
 export default function ResourcesPage() {
   return (
-    <div className="bg-slate-50">
-      {/* ── Page header ───────────────────────────────────────────── */}
-      <header className="border-b bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-14 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-blue-700">
+    <div>
+      {/* ── Page header (glass) ───────────────────────────────────── */}
+      <header className="mt-8 sm:mt-12">
+        <div className="glass-pane mx-auto max-w-5xl px-6 py-12 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500">
             For educators
           </p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            Resources Library
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+            Resources <span className="text-accent-soft">Library</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
             A small, deliberately curated collection of guides, templates,
             and references — written for teachers, faculty, and curriculum
             designers. Everything below is free to use and built on open
@@ -196,14 +196,14 @@ export default function ResourcesPage() {
       </header>
 
       {/* ── Sections ──────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl space-y-16 px-6 py-16">
+      <div className="mx-auto max-w-5xl space-y-12 px-2 py-12 sm:px-0">
         {SECTIONS.map((section) => (
-          <section key={section.heading}>
+          <section key={section.heading} className="glass-pane px-6 py-10">
             <div className="mb-6">
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
                 {section.heading}
               </h2>
-              <p className="mt-2 max-w-2xl text-slate-600">{section.intro}</p>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">{section.intro}</p>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
@@ -212,22 +212,22 @@ export default function ResourcesPage() {
                 const isExternal = isLink && item.href!.startsWith("http");
                 const cardInner = (
                   <Card
-                    className={`h-full border ${
+                    className={
                       isLink
-                        ? "border-slate-200 transition group-hover:-translate-y-0.5 group-hover:border-blue-300 group-hover:shadow-md"
-                        : "border-dashed border-slate-200 bg-white/60"
-                    }`}
+                        ? "glass-card gentle-lift h-full"
+                        : "h-full rounded-xl border border-dashed border-slate-300/70 bg-white/40 backdrop-blur-md"
+                    }
                   >
                     <CardHeader className="pb-2">
                       <div className="mb-2 flex items-center justify-between">
                         <StatusPill status={item.status} tag={item.tag} />
                         {isLink && (
-                          <span className="text-slate-400 transition group-hover:text-blue-500">
+                          <span className="text-slate-400 transition-colors duration-200 group-hover:text-indigo-500">
                             {isExternal ? "↗" : "→"}
                           </span>
                         )}
                       </div>
-                      <CardTitle className="text-lg text-slate-900">
+                      <CardTitle className="text-base text-slate-900">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
@@ -270,7 +270,7 @@ export default function ResourcesPage() {
         ))}
 
         {/* ── Forward-looking note ────────────────────────────────── */}
-        <section className="rounded-2xl border border-slate-200 bg-white p-8 text-center">
+        <section className="glass-pane p-8 text-center">
           <h2 className="text-xl font-semibold text-slate-900">
             More on the way
           </h2>
@@ -281,7 +281,7 @@ export default function ResourcesPage() {
               href="https://github.com/DaScient/Curriculign/blob/main/CHANGELOG.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-blue-700 underline-offset-4 hover:underline"
+              className="font-medium text-indigo-600 underline-offset-4 transition-colors hover:text-indigo-700 hover:underline"
             >
               follow the changelog ↗
             </a>{" "}

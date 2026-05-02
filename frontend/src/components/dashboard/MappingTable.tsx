@@ -123,16 +123,16 @@ export default function MappingTable({ rows }: Props) {
           value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
           placeholder="Search CLOs, standards, artifacts…"
-          className="w-full max-w-sm rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-full max-w-sm rounded-lg border border-white/70 bg-white/70 px-3 py-2 text-sm text-slate-700 shadow-sm backdrop-blur transition-colors placeholder:text-slate-400 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-200/60"
         />
-        <span className="text-sm text-muted-foreground">
+        <span className="text-sm text-slate-500">
           {table.getFilteredRowModel().rows.length} row(s)
         </span>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border shadow-sm">
-        <table className="min-w-full divide-y divide-slate-200 text-sm">
-          <thead className="bg-slate-50">
+      <div className="glass-pane overflow-x-auto">
+        <table className="min-w-full divide-y divide-slate-200/60 text-sm">
+          <thead className="bg-white/40 backdrop-blur">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
                 {hg.headers.map((header) => (
@@ -140,8 +140,8 @@ export default function MappingTable({ rows }: Props) {
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
                     className={cn(
-                      "whitespace-nowrap px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wide",
-                      header.column.getCanSort() && "cursor-pointer select-none hover:text-slate-900"
+                      "whitespace-nowrap px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500",
+                      header.column.getCanSort() && "cursor-pointer select-none transition-colors hover:text-slate-800"
                     )}
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
@@ -155,9 +155,9 @@ export default function MappingTable({ rows }: Props) {
               </tr>
             ))}
           </thead>
-          <tbody className="divide-y divide-slate-100 bg-white">
+          <tbody className="divide-y divide-slate-200/50">
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-slate-50 transition-colors">
+              <tr key={row.id} className="transition-colors hover:bg-white/60">
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="px-4 py-3 align-top">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -169,7 +169,7 @@ export default function MappingTable({ rows }: Props) {
         </table>
 
         {table.getFilteredRowModel().rows.length === 0 && (
-          <div className="py-16 text-center text-sm text-muted-foreground">
+          <div className="py-16 text-center text-sm text-slate-500">
             No results match your search.
           </div>
         )}
