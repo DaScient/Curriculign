@@ -1,0 +1,58 @@
+[
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-1",
+    "title": "Engineering Knowledge",
+    "description": "An ability to identify, formulate, and solve complex engineering problems by applying principles of engineering, science, and mathematics.",
+    "level": "Student Outcome",
+    "meta": { "category": "technical", "version": "2024" }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-2",
+    "title": "Engineering Design",
+    "description": "An ability to apply engineering design to produce solutions that meet specified needs with consideration of public health, safety, and welfare, as well as global, cultural, social, environmental, and economic factors.",
+    "level": "Student Outcome",
+    "meta": { "category": "design", "version": "2024", "includes_safety": true }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-3",
+    "title": "Communication",
+    "description": "An ability to communicate effectively with a range of audiences.",
+    "level": "Student Outcome",
+    "meta": { "category": "professional", "version": "2024" }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-4",
+    "title": "Ethics",
+    "description": "An ability to recognize ethical and professional responsibilities in engineering situations and make informed judgments, which must consider the impact of engineering solutions in global, economic, environmental, and societal contexts.",
+    "level": "Student Outcome",
+    "meta": { "category": "professional", "version": "2024" }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-5",
+    "title": "Teamwork",
+    "description": "An ability to function effectively on a team whose members together provide leadership, create a collaborative and inclusive environment, establish goals, plan tasks, and meet objectives.",
+    "level": "Student Outcome",
+    "meta": { "category": "professional", "version": "2024" }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-6",
+    "title": "Experimentation",
+    "description": "An ability to develop and conduct appropriate experimentation, analyze and interpret data, and use engineering judgment to draw conclusions.",
+    "level": "Student Outcome",
+    "meta": { "category": "technical", "version": "2024" }
+  },
+  {
+    "framework": "ABET",
+    "code": "ABET-SO-7",
+    "title": "Lifelong Learning",
+    "description": "An ability to acquire and apply new knowledge as needed, using appropriate learning strategies.",
+    "level": "Student Outcome",
+    "meta": { "category": "professional", "version": "2024" }
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "framework": "WASC",
+    "code": "WASC-CC-1",
+    "title": "Written Communication",
+    "description": "Students demonstrate the ability to express ideas clearly and effectively in written form across a variety of disciplines and contexts.",
+    "level": "Core Competency",
+    "parent_code": null,
+    "meta": { "competency_type": "communication" }
+  },
+  {
+    "framework": "WASC",
+    "code": "WASC-CC-2",
+    "title": "Quantitative Reasoning",
+    "description": "Students demonstrate the ability to reason with and about numbers, symbols, and data to solve problems and make decisions.",
+    "level": "Core Competency",
+    "parent_code": null,
+    "meta": { "competency_type": "quantitative" }
+  },
+  {
+    "framework": "WASC",
+    "code": "WASC-CC-3",
+    "title": "Critical Thinking",
+    "description": "Students demonstrate the ability to analyze, evaluate, and synthesize information to form reasoned arguments and judgments.",
+    "level": "Core Competency",
+    "parent_code": null,
+    "meta": { "competency_type": "critical_thinking" }
+  },
+  {
+    "framework": "WASC",
+    "code": "WASC-CC-4",
+    "title": "Oral Communication",
+    "description": "Students demonstrate the ability to communicate effectively in spoken form to diverse audiences in various contexts.",
+    "level": "Core Competency",
+    "parent_code": null,
+    "meta": { "competency_type": "communication" }
+  },
+  {
+    "framework": "WASC",
+    "code": "WASC-CC-5",
+    "title": "Information Literacy",
+    "description": "Students demonstrate the ability to locate, evaluate, and use information effectively and ethically to accomplish a specific purpose.",
+    "level": "Core Competency",
+    "parent_code": null,
+    "meta": { "competency_type": "information_literacy" }
+  },
+  {
+    "framework": "WASC",
+    "code": "WASC-ILO-1",
+    "title": "Global Citizenship",
+    "description": "Students demonstrate an understanding of global interdependence, diverse cultural perspectives, and their role as responsible global citizens.",
+    "level": "ILO",
+    "parent_code": "WASC-CC-3",
+    "meta": { "ilo_number": 1 }
+  }
+]
