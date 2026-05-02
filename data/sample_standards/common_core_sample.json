@@ -1,0 +1,42 @@
+[
+  {
+    "framework": "COMMON_CORE",
+    "code": "CCSS.MATH.CONTENT.8.G.A.1",
+    "title": "Geometric Properties – Transformations",
+    "description": "Verify experimentally the properties of rotations, reflections, and translations: lines are taken to lines, and line segments to line segments of the same length; angles are taken to angles of the same measure; parallel lines are taken to parallel lines.",
+    "level": "Standard",
+    "parent_code": "CCSS.MATH.CONTENT.8.G",
+    "meta": {
+      "subject": "Mathematics",
+      "grade": 8,
+      "domain": "Geometry",
+      "cluster": "Understand congruence and similarity using physical models, transparencies, or geometry software."
+    }
+  },
+  {
+    "framework": "COMMON_CORE",
+    "code": "CCSS.ELA-LITERACY.CCRA.W.1",
+    "title": "Argument Writing",
+    "description": "Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence.",
+    "level": "Anchor Standard",
+    "parent_code": "CCSS.ELA-LITERACY.CCRA.W",
+    "meta": {
+      "subject": "English Language Arts",
+      "strand": "Writing",
+      "anchor": true
+    }
+  },
+  {
+    "framework": "COMMON_CORE",
+    "code": "CCSS.ELA-LITERACY.CCRA.R.1",
+    "title": "Reading Comprehension – Key Ideas",
+    "description": "Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from the text.",
+    "level": "Anchor Standard",
+    "parent_code": "CCSS.ELA-LITERACY.CCRA.R",
+    "meta": {
+      "subject": "English Language Arts",
+      "strand": "Reading",
+      "anchor": true
+    }
+  }
+]
