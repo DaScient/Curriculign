@@ -24,6 +24,12 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+defaults:
+  run:
+    # The Next.js application lives in `frontend/`, so every shell step
+    # runs from there unless explicitly overridden.
+    working-directory: ./frontend
+
 jobs:
   # Build job
   build:
@@ -34,15 +40,25 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+          if [ -f "yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
+            echo "lockfile=frontend/yarn.lock" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
+          elif [ -f "package-lock.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            echo "lockfile=frontend/package-lock.json" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "package.json" ]; then
+            # No lockfile committed — fall back to `npm install` so the
+            # workflow stays resilient until one is added.
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            echo "lockfile=frontend/package.json" >> $GITHUB_OUTPUT
             exit 0
           else
             echo "Unable to determine package manager"
@@ -53,6 +69,7 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ${{ steps.detect-package-manager.outputs.lockfile }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -65,12 +82,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            .next/cache
+            frontend/.next/cache
           # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('frontend/package-lock.json', 'frontend/yarn.lock', 'frontend/package.json') }}-${{ hashFiles('frontend/**.[jt]s', 'frontend/**.[jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('frontend/package-lock.json', 'frontend/yarn.lock', 'frontend/package.json') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
@@ -78,7 +95,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./frontend/out
 
   # Deployment job
   deploy:
