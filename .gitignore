@@ -1,0 +1,38 @@
+# gitignore — Curriculign monorepo
+
+# ── Environment ──────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+*.coverage
+htmlcov/
+
+# ── Node / Next.js ───────────────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+
+# ── Data output (generated syllabi) ─────────────────────────────
+data/output/
+
+# ── Uploads (runtime artefacts) ──────────────────────────────────
+/tmp/
+
+# ── macOS / Editor ───────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
