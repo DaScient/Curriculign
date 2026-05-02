@@ -9,11 +9,11 @@ export function cn(...inputs: ClassValue[]) {
 export function coverageColor(status: CoverageStatus): string {
   switch (status) {
     case "covered":
-      return "bg-green-500";
+      return "bg-emerald-400/90";
     case "partial":
-      return "bg-amber-400";
+      return "bg-amber-400/90";
     case "uncovered":
-      return "bg-red-500";
+      return "bg-rose-400/90";
   }
 }
 

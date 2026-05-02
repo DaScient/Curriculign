@@ -11,11 +11,13 @@ const STACK = [
 
 export default function TechStack() {
   return (
-    <section className="bg-slate-900 py-20 text-white">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="mt-12">
+      <div className="glass-pane px-6 py-16 sm:py-20">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">Built on the Right Foundation</h2>
-          <p className="mt-4 text-slate-400">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+            Built on the Right Foundation
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
             Every tool chosen for production reliability, open standards, and zero vendor lock-in.
           </p>
         </div>
@@ -24,11 +26,11 @@ export default function TechStack() {
           {STACK.map((item) => (
             <div
               key={item.label}
-              className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10"
+              className="glass-card gentle-lift p-4"
             >
-              <div className="mb-2 text-2xl">{item.icon}</div>
-              <div className="font-semibold">{item.label}</div>
-              <div className="mt-1 text-xs text-slate-400">{item.desc}</div>
+              <div className="mb-2 text-2xl" aria-hidden>{item.icon}</div>
+              <div className="text-sm font-semibold text-slate-800">{item.label}</div>
+              <div className="mt-1 text-xs leading-relaxed text-slate-500">{item.desc}</div>
             </div>
           ))}
         </div>

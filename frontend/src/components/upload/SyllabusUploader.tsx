@@ -73,10 +73,10 @@ export default function SyllabusUploader() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <Card>
+      <Card className="glass-pane">
         <CardHeader>
-          <CardTitle>Upload a Syllabus or Lesson Plan</CardTitle>
-          <p className="text-sm text-muted-foreground">
+          <CardTitle className="text-xl text-slate-900">Upload a Syllabus or Lesson Plan</CardTitle>
+          <p className="text-sm text-slate-500">
             Accepts PDF, plain text, or Markdown — up to 20 MB.
           </p>
         </CardHeader>
@@ -85,11 +85,15 @@ export default function SyllabusUploader() {
             {/* Dropzone */}
             <div
               {...getRootProps()}
-              className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 text-center transition
-                ${isDragActive ? "border-blue-500 bg-blue-50" : "border-slate-300 bg-slate-50 hover:border-blue-400 hover:bg-blue-50/50"}`}
+              className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-10 text-center transition-all duration-300 ease-out
+                ${
+                  isDragActive
+                    ? "border-indigo-300 bg-indigo-50/60"
+                    : "border-slate-300/70 bg-white/40 hover:border-indigo-300/70 hover:bg-white/60"
+                }`}
             >
               <input {...getInputProps()} />
-              <div className="text-4xl">{file ? "📄" : "☁️"}</div>
+              <div className="text-4xl" aria-hidden>{file ? "📄" : "☁️"}</div>
               {file ? (
                 <p className="mt-2 font-medium text-slate-700">{file.name}</p>
               ) : (
@@ -110,7 +114,7 @@ export default function SyllabusUploader() {
               <select
                 value={framework}
                 onChange={(e) => setFramework(e.target.value as Framework)}
-                className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-white/70 bg-white/70 px-3 py-2 text-sm text-slate-700 shadow-sm backdrop-blur transition-colors focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-200/60"
               >
                 {FRAMEWORKS.map((fw) => (
                   <option key={fw} value={fw}>
@@ -136,7 +140,7 @@ export default function SyllabusUploader() {
                   value={fields[name]}
                   onChange={handleChange}
                   placeholder={placeholder}
-                  className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-white/70 bg-white/70 px-3 py-2 text-sm text-slate-700 shadow-sm backdrop-blur transition-colors placeholder:text-slate-400 focus:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-200/60"
                 />
               </div>
             ))}
@@ -144,12 +148,14 @@ export default function SyllabusUploader() {
             {/* Status indicator */}
             {status !== "idle" && (
               <div
-                className={`rounded-lg px-4 py-3 text-sm font-medium ${
+                role="status"
+                aria-live="polite"
+                className={`rounded-xl border px-4 py-3 text-sm font-medium backdrop-blur transition-colors ${
                   status === "error"
-                    ? "bg-red-50 text-red-700"
+                    ? "border-rose-200/70 bg-rose-50/70 text-rose-700"
                     : status === "ready"
-                    ? "bg-green-50 text-green-700"
-                    : "bg-blue-50 text-blue-700"
+                    ? "border-emerald-200/70 bg-emerald-50/70 text-emerald-700"
+                    : "border-sky-200/70 bg-sky-50/70 text-sky-700"
                 }`}
               >
                 {status === "uploading" && "⏳ Uploading and ingesting file…"}
